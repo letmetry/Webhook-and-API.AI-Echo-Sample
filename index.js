@@ -20,7 +20,7 @@ restService.post("/echo", function(req, res) {
     req.body.result.parameters.media
       ? req.body.result.parameters.location //"is it " + req.body.result.parameters.location + " " + req.body.result.parameters.device
       : "Seems like some problem. Speak again.";
-  console.log(JSON.stringify(req.body.result.parameters));
+  //console.log(JSON.stringify(req.body.result.parameters));
   return res.json({
     speech: speech,
     displayText: speech,
