@@ -18,9 +18,9 @@ restService.post("/echo", function(req, res) {
     req.body.result &&
     req.body.result.parameters &&
     req.body.result.parameters.media
-      ? "is it " + req.body.result.parameters.location + " " + req.body.result.parameters.device
+      ? req.body.result.parameters.location //"is it " + req.body.result.parameters.location + " " + req.body.result.parameters.device
       : "Seems like some problem. Speak again.";
-  console.log(req.body.result);
+  //console.log(req.body.result);
   return res.json({
     speech: speech,
     displayText: speech,
