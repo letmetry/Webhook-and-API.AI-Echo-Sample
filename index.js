@@ -27,7 +27,7 @@ restService.post("/echo", function(req, res) {
     source: "webhook-echo-sample"
   });
 });
-
+/*
 restService.post("/audio", function(req, res) {
   var speech = "";
   switch (req.body.result.parameters.AudioSample.toLowerCase()) {
@@ -195,7 +195,7 @@ restService.post("/slack-test", function(req, res) {
     }
   });
 });
-
+*/
 restService.listen(process.env.PORT || 8000, function() {
-  console.log("Server up and listening");
+  console.log("Heroku server up and listening");
 });
