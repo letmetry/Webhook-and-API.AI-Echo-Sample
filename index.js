@@ -14,12 +14,12 @@ restService.use(
 restService.use(bodyParser.json());
 
 restService.post("/echo", function(req, res) {
-  var speech =
-    req.body.result &&
+  var speech = req.body.result.parameters.media;
+   /* req.body.result &&
     req.body.result.parameters &&
     req.body.result.parameters.media
       ? req.body.result.parameters.location //"is it " + req.body.result.parameters.location + " " + req.body.result.parameters.device
-      : "Seems like some problem. Speak again.";
+      : "Seems like some problem. Speak again.";*/
   //console.log(JSON.stringify(req.body.result.parameters));
   return res.json({
     speech: speech,
