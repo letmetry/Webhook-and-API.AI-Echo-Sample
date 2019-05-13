@@ -1,7 +1,7 @@
 "use strict";
 
-const express = require("express");
-const bodyParser = require("body-parser");
+const express = require('express');
+const bodyParser = require('body-parser');
 
 const restService = express();
 
@@ -13,18 +13,13 @@ restService.use(
 
 restService.use(bodyParser.json());
 
-restService.post("/echo", function(req, res) {
-  var speech = JSON.stringify(req.body.result.parameters);
-   /* req.body.result &&
-    req.body.result.parameters &&
-    req.body.result.parameters.media
-      ? req.body.result.parameters.location //"is it " + req.body.result.parameters.location + " " + req.body.result.parameters.device
-      : "Seems like some problem. Speak again.";*/
+restService.post('/echo', function(req, res) {
+  var speech = req.body.result && req.body.result.parameters && req.body.result.parameters.media ? req.body.result.parameters.location : 'Seems like some problem. Speak again.';
   //console.log(JSON.stringify(req.body.result.parameters));
   return res.json({
     speech: speech,
     displayText: speech,
-    source: "webhook-echo-sample"
+    source: 'webhook-echo-sample'
   });
 });
 /*
