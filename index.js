@@ -17,11 +17,11 @@ app.post('/echo', function(req, res) {
   //var speech = req.body.queryResult && req.body.queryResult.parameters && req.body.queryResult.parameters.media ? req.body.queryResult.parameters.location : 'Seems like some problem. Speak again.';
   var speech = req.body && req.body.queryResult.parameters ? req.body.queryResult.parameters.location : 'Seems like some problem. Speak again.';
   console.log(JSON.stringify(req.body.queryResult.parameters));
-  let response = speech;
+  let response = 'response is ' + speech;
   let sourceURL = '';
   let responseObj = {
                       "fulfillmentText": response
-                      ,"fulfillmentMessages": [{"text" : { "text" : [speech] }}]
+                      ,"fulfillmentMessages": [{"text" : { "text" : ['message is ' + speech] }}]
                       ,"source": sourceURL
                     }
   return res.json(responseObj);
