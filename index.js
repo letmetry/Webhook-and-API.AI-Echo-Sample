@@ -2,7 +2,7 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
-
+var speech, response, sourceURL, responseObj; 
 const app = express();
 
 app.use(
@@ -15,11 +15,11 @@ app.use(bodyParser.json());
 
 app.post('/echo', function(req, res) {
   //var speech = req.body.queryResult && req.body.queryResult.parameters && req.body.queryResult.parameters.media ? req.body.queryResult.parameters.location : 'Seems like some problem. Speak again.';
-  var speech = req.body && req.body.queryResult.parameters ? req.body.queryResult.parameters.location : 'Seems like some problem. Speak again.';
+  speech = req.body && req.body.queryResult.parameters ? req.body.queryResult.parameters.location : 'Seems like some problem. Speak again.';
   console.log(JSON.stringify(req.body.queryResult.parameters));
-  let response = 'response is ' + speech;
-  let sourceURL = '';
-  let responseObj = {
+  response = 'response is ' + speech;
+  sourceURL = '';
+  responseObj = {
                       "fulfillmentText": response
                       ,"fulfillmentMessages": [{"text" : { "text" : [response] }}]
                       ,"source": sourceURL
