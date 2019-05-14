@@ -3,29 +3,33 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 
-const restService = express();
+const app = express();
 
-restService.use(
+app.use(
   bodyParser.urlencoded({
     extended: true
   })
 );
 
-restService.use(bodyParser.json());
+app.use(bodyParser.json());
 
-restService.post('/echo', function(req, res) {
-  var speech = req.body.queryResult.parameters.media;//req.body.result && req.body.result.parameters && req.body.result.parameters.media ? req.body.result.parameters.location : 'Seems like some problem. Speak again.';
-  //console.log(JSON.stringify(req.body.result.parameters));
-  return res.json({
-    speech: speech,
-    displayText: speech,
-    source: 'webhook-echo-sample'
-  });
+app.post('/echo', function(req, res) {
+  //var speech = req.body.queryResult && req.body.queryResult.parameters && req.body.queryResult.parameters.media ? req.body.queryResult.parameters.location : 'Seems like some problem. Speak again.';
+  var speech = req.body && req.body.queryResult.parameters ? req.body.queryResult.parameters.location : 'Seems like some problem. Speak again.';
+  console.log(JSON.stringify(req.body.queryResult.parameters));
+  let response = ' ';
+  let sourceURL = '';
+  let responseObj = {
+                      "fulfillmentText": response
+                      ,"fulfillmentMessages": [{"text" : { "text" : [speech] }}]
+                      ,"source": sourceURL
+                    }
+  return res.json(responseObj);
 });
 /*
-restService.post("/audio", function(req, res) {
+app.post("/audio", function(req, res) {
   var speech = "";
-  switch (req.body.result.parameters.AudioSample.toLowerCase()) {
+  switch (req.body.queryResult.parameters.AudioSample.toLowerCase()) {
     //Speech Synthesis Markup Language 
     case "music one":
       speech =
@@ -116,7 +120,7 @@ restService.post("/audio", function(req, res) {
   });
 });
 
-restService.post("/video", function(req, res) {
+app.post("/video", function(req, res) {
   return res.json({
     speech:
       '<speak>  <audio src="https://www.youtube.com/watch?v=VX7SSnvpj-8">did not get your MP3 audio file</audio></speak>',
@@ -126,7 +130,7 @@ restService.post("/video", function(req, res) {
   });
 });
 
-restService.post("/slack-test", function(req, res) {
+app.post("/slack-test", function(req, res) {
   var slack_message = {
     text: "Details of JIRA board for Browse and Commerce",
     attachments: [
@@ -191,6 +195,6 @@ restService.post("/slack-test", function(req, res) {
   });
 });
 */
-restService.listen(process.env.PORT || 8000, function() {
+app.listen(process.env.PORT || 8000, function() {
   console.log("Heroku server up and listening");
 });
