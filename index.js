@@ -21,7 +21,7 @@ app.post('/echo', function(req, res) {
   let sourceURL = '';
   let responseObj = {
                       "fulfillmentText": response
-                      ,"fulfillmentMessages": [{"text" : { "text" : ['message is ' + speech] }}]
+                      ,"fulfillmentMessages": [{"text" : { "text" : [response] }}]
                       ,"source": sourceURL
                     }
   return res.json(responseObj);
