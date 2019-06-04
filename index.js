@@ -49,6 +49,15 @@ app.post('/echo', function(req, res) {
   return res.json(responseObj);
 });
 /*
+
+x.push(json2array(i))
+x.push(json2array(j))
+console.log(x)
+o = searchIn(x,'4')
+console.log(o)
+i = array2json(o,i)
+console.log(JSON.parse(JSON.stringify(i)))
+
 app.post("/audio", function(req, res) {
   var speech = "";
   switch (req.body.queryResult.parameters.AudioSample.toLowerCase()) {
