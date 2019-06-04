@@ -3,7 +3,29 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 var speech, response, sourceURL, responseObj; 
+var arrayOfdevices = [], jsonOfdevices = {};
 const app = express();
+
+function json2array(jsonData){
+    var arrayObj = [];
+    for(var jsonObj in jsonData) arrayObj.push(jsonData[jsonObj]);
+    return arrayObj;
+}
+
+function searchIn(Searchwithin,searchIt){
+    found = Searchwithin.find((elements)=>{return elements[0]==searchIt});
+    if(found) return found;
+    else return -1;
+};
+
+function array2json(arrayObj,jsonObj){
+    var count = 0;
+    for(var jsonkey in jsonObj){
+       jsonObj[jsonkey] = arrayObj[count];
+        ++count;
+    };
+    return jsonObj;
+};
 
 app.use(
   bodyParser.urlencoded({
@@ -23,7 +45,7 @@ app.post('/echo', function(req, res) {
                       "fulfillmentText": response
                       ,"fulfillmentMessages": [{"text" : { "text" : [response] }}]
                       ,"source": sourceURL
-                    }
+                    };
   return res.json(responseObj);
 });
 /*
