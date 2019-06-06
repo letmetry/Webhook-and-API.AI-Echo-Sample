@@ -6,6 +6,15 @@ var speech, response, sourceURL, responseObj;
 var arrayOfdevices = [], jsonOfdevices = {};
 const app = express();
 
+function json2json(serverjson){
+    for(var jsonkey in serverjson){
+      if(jsonOfdevices[jsonkey]){
+        jsonOfdevices[jsonkey] = serverjson[jsonkey]
+      }
+    }
+    jsonOfdevices["c"]= Math.floor(Date.now()/1000)
+}
+
 function json2array(jsonData){
     var arrayObj = [];
     for(var jsonObj in jsonData) arrayObj.push(jsonData[jsonObj]);
