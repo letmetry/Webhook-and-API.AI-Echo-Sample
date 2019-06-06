@@ -10,22 +10,23 @@ function json2json(serverjson){
     for(var jsonkey in serverjson){
       if(jsonOfdevices[jsonkey]){
         jsonOfdevices[jsonkey] = serverjson[jsonkey]
-      }
-    }
+      };
+    };
     jsonOfdevices["c"]= Math.floor(Date.now()/1000)
-}
+};
 
 function json2array(jsonData){
     var arrayObj = [];
     for(var jsonObj in jsonData) arrayObj.push(jsonData[jsonObj]);
     return arrayObj;
-}
+};
 
-function searchIn(Searchwithin,searchIt){
-    found = Searchwithin.find((elements)=>{return elements[0]==searchIt});
+function searchIn(Searchwithin,searchLocation,searchLocationArrayID, searchDevice,searchDeviceArrayID){
+    found = Searchwithin.find((elements)=>{ if((elements[searchLocationArrayID]==searchLocation)&&(elements[searchDeviceArrayID]==searchDevice))return elements[0]});
     if(found) return found;
     else return -1;
 };
+
 
 function array2json(arrayObj,jsonObj){
     var count = 0;
@@ -44,7 +45,7 @@ app.use(
 
 app.use(bodyParser.json());
 
-app.post('/echo', function(req, res) {
+app.post('/df', function(req, res) {
   //var speech = req.body.queryResult && req.body.queryResult.parameters && req.body.queryResult.parameters.media ? req.body.queryResult.parameters.location : 'Seems like some problem. Speak again.';
   speech = req.body && req.body.queryResult.parameters ? req.body.queryResult.parameters.location : 'Seems like some problem. Speak again.';
   console.log(JSON.stringify(req.body.queryResult.parameters));
@@ -57,6 +58,17 @@ app.post('/echo', function(req, res) {
                     };
   return res.json(responseObj);
 });
+
+app.post('/client', function(req, res) {// MCU request
+    let clientJson = req;
+    console.log(JSON.stringify(clientJson));
+});
+
+app.post('/papp', function(req, res) {//portable device app request
+    let pappJson = req;
+    console.log(JSON.stringify(pappJson));
+});
+
 /*
 
 x.push(json2array(i))
