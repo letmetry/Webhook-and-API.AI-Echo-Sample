@@ -3,7 +3,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 var speech, response, sourceURL, responseObj; 
-var arrayOfdevices = [0,"on","master_bedroom","light","DF","",""], jsonOfdevices ={"mem_ID":"","state": "on","location": "master_bedroom","device": "light","media": "DF","query": "","Time":""};
+var arrayOfdevices = [], jsonOfdevices ={"mem_ID":"","state": "on","location": "master_bedroom","device": "light","media": "DF","query": "","Time":""};
 const app = express();
 
 function json2json(serverjson){
