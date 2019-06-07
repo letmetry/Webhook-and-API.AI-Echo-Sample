@@ -27,6 +27,13 @@ function searchIn(Searchwithin,searchLocation,searchLocationArrayID, searchDevic
     else return -1;
 };
 
+function searchIndex(Searchwithin,searchLocation,searchLocationArrayID, searchDevice,searchDeviceArrayID){
+    for(var i=0;i<Searchwithin.length;i++){
+        if((Searchwithin[i][searchLocationArrayID]==searchLocation)&&(Searchwithin[i][searchDeviceArrayID]==searchDevice)){
+            return i;
+        };
+    };
+};
 
 function array2json(arrayObj,jsonObj){
     var count = 0;
