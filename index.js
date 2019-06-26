@@ -69,11 +69,23 @@ app.post('/df', function(req, res) {
 app.post('/client', function(req, res) {// MCU request
     let clientJson = req;
     console.log(JSON.stringify(clientJson));
+  responseObj = {
+                      "fulfillmentText": response
+                      ,"fulfillmentMessages": [{"text" : { "text" : [response] }}]
+                      ,"source": sourceURL
+                    };
+  return res.json(responseObj);    
 });
 
 app.post('/papp', function(req, res) {//portable device app request
     let pappJson = req;
     console.log(JSON.stringify(pappJson));
+  responseObj = {
+                      "fulfillmentText": response
+                      ,"fulfillmentMessages": [{"text" : { "text" : [response] }}]
+                      ,"source": sourceURL
+                    };
+  return res.json(responseObj);    
 });
 
 /*
