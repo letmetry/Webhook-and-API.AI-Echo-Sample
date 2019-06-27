@@ -267,5 +267,5 @@ app.post("/slack-test", function(req, res) {
 });
 */
 app.listen(process.env.PORT || 8000, function() {
-  console.log("Heroku server up and listening");
+  console.log("Heroku server up and listening on port: %d", app.address().port);
 });
