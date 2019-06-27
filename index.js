@@ -2,7 +2,6 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
-const socket = require('socket.io');
 var speech, response, sourceURL, responseObj; 
 var arrayOfdevices = [], jsonOfdevices ={"mem_ID":"","state": "on","location": "master_bedroom","device": "light","media": "DF","query": "","Time":""};
 const app = express();
@@ -269,10 +268,5 @@ app.post("/slack-test", function(req, res) {
 */
 var port = process.env.PORT || 8000
 var server = app.listen(port, function() {
-  console.log("Heroku server up and listening on port: " + port);
-});
-
-var io = socket(server);
-io.on('connection',()=>{
-   console.log('socket is connected');
+  console.log("Heroku server up and listening on port: " + port + "and origin is: " + location.origin);
 });
