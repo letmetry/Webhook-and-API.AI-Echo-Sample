@@ -1,14 +1,28 @@
 {
-  "name": "webhook-echo-sample",
+  "name": "node",
   "version": "1.0.0",
-  "description": "Webhook echo sample",
+  "description": "Home automation system.",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "test": "node index.js"
   },
-  "author": "Sunil Syal",
+  "repository": {
+    "type": "git",
+    "url": "\"https://github.com/letmetry/Webhook-and-API.AI-Echo-Sample\""
+  },
+  "keywords": [
+    "Esp8266",
+    "socket",
+    "io",
+    "websocket",
+    "home",
+    "automation."
+  ],
+  "author": "Mohammad",
+  "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.15.0",
-    "express": "^4.13.4"
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "socket.io": "^2.2.0"
   }
 }
