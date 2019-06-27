@@ -4,7 +4,7 @@
   "description": "Home automation system.",
   "main": "index.js",
   "scripts": {
-    "test": "node index.js"
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -18,7 +18,7 @@
     "home",
     "automation."
   ],
-  "author": "Mohammad",
+  "author": "Mohammad Islam",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.15.0",
