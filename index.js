@@ -88,9 +88,9 @@ app.post('/papp', function(req, res) {//portable device app request
   return res.json(responseObj);    
 });
 
-var port = process.env.PORT || 8000
+var port = process.env.PORT || 8000;
 app.listen(port, function() {
-  console.log("Heroku server up and listening on port: " + port + "and origin is: " + location.origin);
+  console.log("Heroku server up and listening on port: " + port );
 });
 
 
